@@ -1,0 +1,686 @@
+
+/* --- Navbar Styles (The styles you want to keep!) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #022c54, #034078);
+    padding: 15px 40px;
+    color: white;
+    box-shadow: 0 6px 12px rgba(126, 97, 97, 0.25);
+    border-bottom: 2px solid #034078;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/*
+ * Comprehensive CSS for Patient Dashboard (Save as PatientDashboard.css)
+ * Ensures consistent styling across all tabs (Dashboard, Appointments, Records, Prescriptions, Profile).
+ * Palette: Primary Blue (#022c54), Secondary Blue (#034078), Accent Gold (#ffd700), Background (#f3f6f9).
+ */
+
+/* ========================================================================= */
+/* 1. Global & Layout */
+/* ========================================================================= */
+
+body {
+    /* Basic global styles, though mostly defined in App.css, repeat for safety */
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f6f9;
+    color: #333;
+}
+
+
+.dashboard-content {
+    flex: 1;
+    padding: 20px 30px; /* slightly smaller padding */
+    background: #f3f6f9;
+    overflow-x: auto; /* horizontal scroll if needed */
+}
+
+/* Add this rule to your CSS file (e.g., App.css) */
+.dashboard-container {
+    display: flex; /* CRITICAL: This positions the children (sidebar & content) side-by-side */
+    min-height: 100vh; /* Ensures the dashboard takes up the full screen height */
+    width: 100%;
+}
+
+/* Hero banner styling */
+.hero-banner {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 1s ease-in-out;
+}
+
+/* ========================================================================= */
+/* 2. Sidebar (Navigation) */
+/* ========================================================================= */
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #022c54, #034078);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    box-shadow: 3px 0 15px rgba(0,0,0,0.2);
+    border-right: rgba(205, 182, 182, 0.2);
+}
+
+.sidebar h2 {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffd700;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar button {
+    background: none;
+    border: none;
+    padding: 14px 10px;
+    margin-bottom: 15px;
+    color: #f0f0f0;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sidebar button:hover,
+/* Note: You should dynamically set an active class, e.g., .sidebar button.active */
+.sidebar button[aria-current="true"] { 
+    background-color: rgba(255,215,0,0.2);
+    color: #ffd700;
+    transform: translateX(5px);
+    box-shadow: inset 5px 0 0 #ffd700;
+}
+
+.emergency-btn {
+    margin-top: auto;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 77, 77, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.emergency-btn:hover {
+    background-color: #e60000;
+    transform: scale(1.02);
+}
+
+.logout-btn {
+    margin-top: 15px;
+    background-color: #034078;
+    color: #f0f0f0;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #022c54;
+    color: #ffd700;
+}
+
+/* ========================================================================= */
+/* 3. Main Content Area & Headers */
+/* ========================================================================= */
+
+.dashboard-content {
+    flex: 1;
+    padding: 35px 50px;
+    background: #f3f6f9;
+    overflow-y: auto;
+}
+
+.dashboard-content h2, .dashboard-content h3 {
+    color: #022c54;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* Fallback for "No data found" messages */
+.dashboard-content p {
+    color: #555;
+    font-style: italic;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+/* ========================================================================= */
+/* 4. Form & Profile Containers */
+/* ========================================================================= */
+/* --- Additions to App.css for Login/Register Screens --- */
+
+/* 1. Centering and Background for Auth Pages */
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use full viewport height */
+    background-color: #e8f0f7; /* Very light blue background for contrast */
+}
+
+/* 2. Login/Register Form Card */
+/* Re-use .auth-container, but give it a stronger look for the main login action */
+.auth-container {
+    max-width: 450px; /* Make it narrower than the dashboard version for focus */
+    width: 90%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: #022c54;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 3. Input Fields */
+.auth-container input {
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #c9d6e5;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus {
+    border-color: #034078;
+    box-shadow: 0 0 0 3px rgba(3, 64, 120, 0.2);
+}
+
+/* 4. Submit Button (Assuming a generic .submit-btn class in your Login/Register JSX) */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #022c54; /* Deep Blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #034078;
+    transform: translateY(-2px);
+}
+
+/* 5. Links/Switching between Login/Register */
+.auth-switch-link {
+    display: block;
+    margin-top: 20px;
+    color: #034078;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.auth-switch-link:hover {
+    text-decoration: underline;
+}
+
+/* ========================================================================= */
+/* 5. Tables & Data Display (Waiting, Appointments, History, Records, Prescriptions) */
+/* ========================================================================= */
+
+.waiting-table, .appointments-table, .video-history-table, .records-table, .prescriptions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Global table header style */
+.waiting-table th, .appointments-table th, .video-history-table th, .records-table th, .prescriptions-table th {
+    background-color: #034078;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Global table cell style */
+.waiting-table td, .appointments-table td, .video-history-table td, .records-table td, .prescriptions-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+/* Global table row hover effect */
+.appointments-table tbody tr:hover,
+.video-history-table tbody tr:hover,
+.records-table tbody tr:hover,
+.prescriptions-table tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* Specific styling for Prescription Status (using inline span or conditional class if possible) */
+.status-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Example of status specific colors (you'll need to apply these classes to the <td> content) */
+.status-active {
+    background-color: #e6ffed; /* Light green background */
+    color: #1a7f37; /* Dark green text */
+    border: 1px solid #b7e4c7;
+}
+
+.status-completed {
+    background-color: #f0f0f5; /* Light grey background */
+    color: #6c757d; /* Grey text */
+    border: 1px solid #c8d0d6;
+}
+
+
+/* ========================================================================= */
+/* 6. Action Buttons */
+/* ========================================================================= */
+
+.book-btn {
+    padding: 12px 25px;
+    background: #ffd700;
+    color: #022c54;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 25px;
+}
+
+.book-btn:hover {
+    background-color: #ffc700;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.5);
+    transform: translateY(-1px);
+}
+
+.video-call-btn, .cancel-btn, .download-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+    min-width: 120px;
+}
+
+.video-call-btn {
+    background: #022c54;
+    color: #ffd700;
+}
+
+.video-call-btn:hover {
+    background: #034078;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background-color: #d32f2f;
+}
+
+.download-btn {
+    min-width: 90px;
+    background: #022c54;
+    color: #ffd700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.download-btn:hover {
+    background: #034078;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 44, 84, 0.3);
+}
+
+.carousel-container {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+
+/* --- Additions to App.css for Radio Buttons --- */
+
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.radio-group label {
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.radio-group input[type="radio"] {
+    /* Use standard size for inputs but adjust margin to fit the label */
+    width: auto;
+    margin-right: 8px;
+    appearance: none; /* Hide default radio button */
+    -webkit-appearance: none;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 50%;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #034078;
+    border-color: #034078;
+    box-shadow: 0 0 0 4px #e8f0f7; /* Outer ring effect */
+}
+
+/* --- App.css (For Global Styles, Navbar, and Unauthenticated Forms) --- */
+
+/* ===== Global ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f6f9;
+    color: #333;
+}
+
+/* --- Navbar Styles --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #022c54, #034078);
+    padding: 15px 40px;
+    color: white;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Adjusted shadow color for professionalism */
+    border-bottom: 2px solid #034078;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ===== Login/Register (Auth) Styles ===== */
+
+/* 1. Centering and Background for Auth Pages */
+.auth-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Use full viewport height */
+    background-color: #e8f0f7; /* Very light blue background for contrast */
+}
+
+/* 2. Login/Register Form Card */
+.auth-container {
+    max-width: 450px;
+    width: 90%;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: #022c54;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 3. Input Fields */
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #c9d6e5;
+    outline: none;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus {
+    border-color: #034078;
+    box-shadow: 0 0 0 3px rgba(3, 64, 120, 0.2);
+}
+
+/* 4. Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #022c54; /* Deep Blue */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #034078;
+    transform: translateY(-2px);
+}
+
+/* 5. Radio Button Styles */
+.radio-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.radio-group label {
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.radio-group input[type="radio"] {
+    /* Use standard size for inputs but adjust margin to fit the label */
+    width: auto;
+    margin-right: 8px;
+    appearance: none; 
+    -webkit-appearance: none;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 50%;
+    position: relative;
+    top: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.radio-group input[type="radio"]:checked {
+    background-color: #034078;
+    border-color: #034078;
+    box-shadow: 0 0 0 4px #e8f0f7; /* Outer ring effect */
+}
+
+/* --- New Styles for Appointment Form Layout --- */
+
+/* 1. Use CSS Grid for a 2-column input layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns, equal width */
+    gap: 20px; /* Space between rows and columns */
+    margin-bottom: 20px;
+}
+
+/* 2. Style the overall form container for dashboard use */
+/* IMPORTANT: Update the existing .auth-container style to be wider and left-aligned for dashboard forms */
+.auth-container {
+    max-width: 800px; /* Wider for the dashboard form */
+    width: 90%;
+    margin: 0 auto 30px auto; /* Center it with bottom margin */
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Aligns text inside the form nicely */
+}
+
+/* 3. Ensure the textarea looks good and takes full width */
+.auth-container textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #c9d6e5;
+    box-sizing: border-box; /* Crucial for width calculation */
+}
+
+/* 4. Adjust the Book Appointment button to look cleaner */
+.auth-container .book-btn {
+    align-self: flex-start; 
+    width: 250px; /* Fixed width for a better look */
+    margin-top: 20px;
+}
+
+/* 5. Style all input types consistently inside this container */
+/* Make sure all form elements inside the form-grid and textarea/button are styled */
+.auth-container input,
+.auth-container select,
+.auth-container textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #c9d6e5;
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease;
+}
+
+.auth-container input:focus,
+.auth-container select:focus,
+.auth-container textarea:focus {
+    border-color: #034078;
+    box-shadow: 0 0 0 3px rgba(3, 64, 120, 0.2);
+}
