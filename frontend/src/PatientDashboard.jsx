@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { jsPDF } from "jspdf";
-import { useNavigate } from 'react-router-dom';
-
 
 import './App.css';
 
@@ -88,14 +86,17 @@ const PatientDashboard = ({ onLogout }) => {
 
   const [waitingList, setWaitingList] = useState([]);
 
-  const navigate = useNavigate();
-
+  // 🛑 FIX 2: CHANGE HANDLER TO CALL PROP 🛑
   const handleLogout = () => {
-    localStorage.clear();
-    sessionStorage.clear();
-    navigate('/login');
+    // In a real app, this would clear authentication tokens.
+    // We now call the function passed from the parent to handle navigation.
+    if (onLogout) {
+      onLogout();
+    } else {
+      // Fallback for standalone use (or if no router is set up)
+      window.location.reload(); 
+    }
   };
-
   // ----------------------------------------
 
   const handleEmergency = () => alert('Hospital has been notified about your emergency!');

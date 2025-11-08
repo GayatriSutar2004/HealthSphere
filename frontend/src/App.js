@@ -15,8 +15,18 @@ const images = [
 ];
 
 function App() {
+  const [title, setTitle] = useState('Default value');
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // ✅ Fix: Correct arrow function syntax in fetch
+  useEffect(() => {
+    fetch("http://localhost:8080/home")
+      .then(response => response.text())
+      .then(text => setTitle(text))
+      .catch(error => console.error("Error fetching:", error));
+  }, []);
+
+  // ✅ Slideshow logic for hospital images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -26,6 +36,7 @@ function App() {
 
   return (
     <>
+      <h1>React + {title}</h1>
       <Navbar />
 
       <Routes>
